@@ -12,7 +12,7 @@ public class BaseTest {
 
     private WebDriver get_driver() {
         System.setProperty("webdriver.chrome.driver",
-                "/Users/gxs0921/Desktop/FTE_CHALLENGE/chromedriver");
+                "chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://sheltered-mesa-19374.herokuapp.com/");
         return driver;

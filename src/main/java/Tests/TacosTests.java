@@ -22,7 +22,6 @@ public class TacosTests extends BaseTest {
         newPostSteps.checkRedirectToPostPage();
         postSteps.checkContents();
         postSteps.checkCreatorAndDate();
-        Thread.sleep(3000);
     }
 
     @Test(description = "Test that when creating a new post it requires a title")
@@ -30,7 +29,6 @@ public class TacosTests extends BaseTest {
         loginSteps.logIn();
         homeSteps.goToNewPost();
         newPostSteps.missTitleOnNewPost();
-        Thread.sleep(3000);
     }
 
     @Test(description = "Test that when creating a new post it requires a title")
@@ -38,7 +36,6 @@ public class TacosTests extends BaseTest {
         loginSteps.logIn();
         homeSteps.goToNewPost();
         newPostSteps.missSubtitleOnNewPost();
-        Thread.sleep(3000);
     }
 
 }

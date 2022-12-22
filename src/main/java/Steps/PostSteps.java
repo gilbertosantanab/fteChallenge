@@ -17,26 +17,26 @@ public class PostSteps extends BaseSteps {
 
     private String user = "gs24";
 
-    private String title = "Hello everyone!!!";
+    private String postTitle = "Hello everyone!!!";
 
-    private String subTitle = "I hope you are doing great";
+    private String postSubTitle = "I hope you are doing great";
 
-    private String body = "I am working on my challenge";
+    private String postBody = "I am working on my challenge";
 
     public String postCreator() {
         return user;
     }
 
     public String postBody() {
-        return body;
+        return postBody;
     }
 
     public String postSubtitle() {
-        return subTitle;
+        return postSubTitle;
     }
 
     public String postTitle() {
-        return title;
+        return postTitle;
     }
 
     Date today = new Date();
@@ -50,14 +50,15 @@ public class PostSteps extends BaseSteps {
 
 
     public boolean checkContents() {
-        String title = postTitle();
-        String subtitle = postSubtitle();
-        String body = postBody();
+        String posTitle = postTitle();
+        String postSubtitle = postSubtitle();
+        String postBody = postBody();
         String successM = "Contents matched";
         String failureM = "Contents NOT matched";
 
-        if(postPage.getPostTitle().equals(title) && postPage.getPostSubtitle().equals(subtitle) &&
-                postPage.getPostBody().equals(body)){
+        if(postPage.getPostTitle().getText().equals(posTitle) &&
+                postPage.getPostSubtitle().getText().equals(postSubtitle) &&
+                postPage.getPostBody().getText().equals(postBody)){
             System.out.println(successM);
             return true;
         } else {

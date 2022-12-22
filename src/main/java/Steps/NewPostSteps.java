@@ -60,6 +60,7 @@ public class NewPostSteps extends BaseSteps {
         Thread.sleep(1500);
         newPostPage.getCreateBtn().click();
         checkMissingTitleAlert();
+        Thread.sleep(3000);
     }
 
     public void missSubtitleOnNewPost() throws InterruptedException {
@@ -71,6 +72,7 @@ public class NewPostSteps extends BaseSteps {
         Thread.sleep(1500);
         newPostPage.getCreateBtn().click();
         checkMissingSubtitleAlert();
+        Thread.sleep(3000);
     }
 
     public boolean checkMissingTitleAlert() {
