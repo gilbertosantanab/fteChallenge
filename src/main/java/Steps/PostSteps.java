@@ -1,6 +1,7 @@
 package Steps;
 
 import Pages.PostPage;
+import Tests.CustomAsserts;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -49,38 +50,24 @@ public class PostSteps extends BaseSteps {
     }
 
 
-    public boolean checkContents() {
+    public void checkContents() {
         String posTitle = postTitle();
         String postSubtitle = postSubtitle();
         String postBody = postBody();
-        String successM = "Contents matched";
-        String failureM = "Contents NOT matched";
-
-        if(postPage.getPostTitle().getText().equals(posTitle) &&
-                postPage.getPostSubtitle().getText().equals(postSubtitle) &&
-                postPage.getPostBody().getText().equals(postBody)){
-            System.out.println(successM);
-            return true;
-        } else {
-            System.out.println(failureM);
-            return false;
-        }
-
+        CustomAsserts.isTextEqual(posTitle, postPage.getPostTitle().getText());
+        CustomAsserts.isTextEqual(postSubtitle, postPage.getPostSubtitle().getText());
+        CustomAsserts.isTextEqual(postBody, postPage.getPostBody().getText());
     }
 
-    public boolean checkCreatorAndDate() {
+    public void checkCreatorAndDate() {
         String creator = postCreator();
         String date = getDate();
         String str = postPage.getPostUser_date().getText();
         String[] myArr = str.split(" ");
+        String showedUser = myArr[2];
         String receivedDate = myArr[5] + " " + myArr[6] + " " + myArr[7];
-
-        if(myArr[2].equals(creator) && receivedDate.equals(date)){
-            System.out.println("User and date matched");
-         return true;
-        }
-        System.out.println("User or Date does not match");
-        return false;
+        CustomAsserts.isTextEqual(creator, showedUser);
+        CustomAsserts.isTextEqual(date, receivedDate);
     }
 
 

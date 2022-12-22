@@ -1,6 +1,7 @@
 package Steps;
 
 import Pages.NewPostPage;
+import Tests.CustomAsserts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -75,40 +76,22 @@ public class NewPostSteps extends BaseSteps {
         Thread.sleep(3000);
     }
 
-    public boolean checkMissingTitleAlert() {
+    public void checkMissingTitleAlert() {
         String required = alertPop();
         String popUpMessage = webDriver.findElement(By.name("title")).getAttribute("validationMessage");
-        if(required.equals(popUpMessage)) {
-            System.out.println("The 'Please fill out this field.' message appeared in title field.");
-            return true;
-        } else {
-            System.out.println("The 'Please fill out this field.' message did NOT appeared in title field. ");
-            return false;
-        }
+        CustomAsserts.isTextEqual(required, popUpMessage);
     }
 
-    public boolean checkMissingSubtitleAlert() {
+    public void checkMissingSubtitleAlert() {
         String required = alertPop();
         String popUpMessage = webDriver.findElement(By.name("subtitle")).getAttribute("validationMessage");
-        if(required.equals(popUpMessage)) {
-            System.out.println("The 'Please fill out this field.' message appeared in Subtitle field.");
-            return true;
-        } else {
-            System.out.println("The 'Please fill out this field.' message did NOT appeared in Subtitle field.");
-            return false;
-        }
-        }
+        CustomAsserts.isTextEqual(required, popUpMessage);
+    }
 
 
-    public boolean checkRedirectToPostPage() {
+    public void checkRedirectToPostPage() {
         String webTitle = postTitle();
-        if(webDriver.getTitle().equals(webTitle)) {
-            System.out.println("Redirected to post page");
-            return true;
-        } else {
-            System.out.println("Not redirected to post page");
-            return false;
-        }
+        CustomAsserts.isTextEqual(webDriver.getTitle(), webTitle);
     }
 
 
